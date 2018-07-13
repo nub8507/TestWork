@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\TestWork.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{369DBECC-A972-4DE2-8F70-62C48AAFE9DE}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\TestWork.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\TestWorkEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{F3143307-D74D-4D0A-9EDE-B8E7029C48FB}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\TestWork">
+      <UniqueIdentifier>{F456E037-340F-48F1-969E-F1FCA037E5D6}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\TestWork\TestWork.Build.cs">
+      <Filter>Source\TestWork</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\TestWork\TestWork.cpp">
+      <Filter>Source\TestWork</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\TestWork\TestWork.h">
+      <Filter>Source\TestWork</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\TestWork\TestWorkGameModeBase.cpp">
+      <Filter>Source\TestWork</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\TestWork\TestWorkGameModeBase.h">
+      <Filter>Source\TestWork</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\TestWork\MyActor.h">
+      <Filter>Source\TestWork</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\TestWork\MainPlayerController.h">
+      <Filter>Source\TestWork</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\TestWork\PlayerPawn.h">
+      <Filter>Source\TestWork</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\TestWork\PlayerCharacter.h">
+      <Filter>Source\TestWork</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\TestWork\EnemyCharacter.h">
+      <Filter>Source\TestWork</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\TestWork\StaticLogic.h">
+      <Filter>Source\TestWork</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\TestWork\MyActor.cpp">
+      <Filter>Source\TestWork</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TestWork\MainPlayerController.cpp">
+      <Filter>Source\TestWork</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TestWork\PlayerPawn.cpp">
+      <Filter>Source\TestWork</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TestWork\PlayerCharacter.cpp">
+      <Filter>Source\TestWork</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TestWork\EnemyCharacter.cpp">
+      <Filter>Source\TestWork</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TestWork\StaticLogic.cpp">
+      <Filter>Source\TestWork</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

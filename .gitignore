@@ -70,8 +70,17 @@ Build/*/**
 Saved/*
 
 # Compiled source files for the engine to use
-Intermediate/*
+#Intermediate/*
 Plugins/*/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+
+Content/StarterContent/*
+Content/InfinityBladeEffects/*
+!Intermediate/ProjectFiles/**
+Intermediate/ReimportCache/*
+Intermediate/Config/*
+Intermediate/AssetRegistryCache/*
+Intermediate/Build/*
+Intermediate/*.*
