@@ -47,9 +47,17 @@ void APlayerPawn::MoveActionPressed()
 	//
 //	GEngine->AddOnScreenDebugMessage(-1, 0.5f, FColor::White, Hit.Location.ToString());
 	//
-	if (Hit.Actor != nullptr && (Hit.GetActor()->GetActorLabel() == TEXT("Landscape1")|| Hit.GetActor()->GetActorLabel() == TEXT("Cube5"))) {
+	if (Hit.Actor == nullptr)
+		return;
 
+	if (Hit.GetActor()->GetActorLabel() == TEXT("Landscape1")) {
+		GEngine->AddOnScreenDebugMessage(-1, 0.5f, FColor::White, Hit.Location.ToString());
 	}
+	else if (Hit.GetActor()->GetActorLabel() == TEXT("Cube5")) {
+		GEngine->AddOnScreenDebugMessage(-1, 0.5f, FColor::White, Hit.Location.ToString());
+	}
+	FString T = Hit.GetActor()->GetActorLabel();
+	GEngine->AddOnScreenDebugMessage(-1, 0.5f, FColor::White, T);
 	//
 }
 

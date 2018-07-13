@@ -61,6 +61,15 @@
     <ClInclude Include="..\..\Source\TestWork\StaticLogic.h">
       <Filter>Source\TestWork</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\TestWork\TwoDimensionalArray.h">
+      <Filter>Source\TestWork</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\TestWork\Structs.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\TestWork\MyLevelScriptActor.h">
+      <Filter>Source\TestWork</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\TestWork\MyActor.cpp">
@@ -79,6 +88,12 @@
       <Filter>Source\TestWork</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\TestWork\StaticLogic.cpp">
+      <Filter>Source\TestWork</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TestWork\TwoDimensionalArray.cpp">
+      <Filter>Source\TestWork</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TestWork\MyLevelScriptActor.cpp">
       <Filter>Source\TestWork</Filter>
     </ClCompile>
   </ItemGroup>

@@ -31,4 +31,9 @@ public:
 	
 	UFUNCTION(BlueprintCallable)
 		void OnHit(AActor* HitComp, AActor* OtherActor, const FHitResult& Hit);
+
+private:
+
+	UPROPERTY()
+		FIntPoint Position;
 };
