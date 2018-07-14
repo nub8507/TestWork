@@ -3,11 +3,10 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Structs.h"
 #include "Engine/LevelScriptActor.h"
 #include "MyLevelScriptActor.generated.h"
 
-struct FMyWay;
+class UMyWay;
 class UTwoDimensionalArray;
 
 UCLASS()
@@ -20,10 +19,10 @@ public:
 	AMyLevelScriptActor();
 
 	UFUNCTION()
-		FMyWay FindWay(AActor* WayOwner);
+		UMyWay* FindWay(AActor* WayOwner);
 
 	UFUNCTION()
-		bool AddWay(FMyWay Way);
+		bool AddWay(UMyWay* Way);
 
 	UPROPERTY()
 		UTwoDimensionalArray* Map;
@@ -31,7 +30,7 @@ public:
 private:
 
 	UPROPERTY()
-		TArray<FMyWay> WayList;
+		TArray<UMyWay*> WayList;
 	
 	
 };

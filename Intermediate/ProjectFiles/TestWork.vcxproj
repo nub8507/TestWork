@@ -254,8 +254,10 @@
   </PropertyGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\TestWork\MyLevelScriptActor.cpp" />
+    <ClCompile Include="..\..\Source\TestWork\MyWay.cpp" />
     <ClCompile Include="..\..\Source\TestWork\TwoDimensionalArray.cpp" />
     <ClInclude Include="..\..\Source\TestWork\MyLevelScriptActor.h" />
+    <ClInclude Include="..\..\Source\TestWork\MyWay.h" />
     <ClInclude Include="..\..\Source\TestWork\Structs.h" />
     <ClInclude Include="..\..\Source\TestWork\TwoDimensionalArray.h" />
     <None Include="..\..\TestWork.uproject" />

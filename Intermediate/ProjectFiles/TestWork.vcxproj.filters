@@ -70,6 +70,9 @@
     <ClInclude Include="..\..\Source\TestWork\MyLevelScriptActor.h">
       <Filter>Source\TestWork</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\TestWork\MyWay.h">
+      <Filter>Source\TestWork</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\TestWork\MyActor.cpp">
@@ -94,6 +97,9 @@
       <Filter>Source\TestWork</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\TestWork\MyLevelScriptActor.cpp">
+      <Filter>Source\TestWork</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TestWork\MyWay.cpp">
       <Filter>Source\TestWork</Filter>
     </ClCompile>
   </ItemGroup>

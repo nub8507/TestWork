@@ -6,7 +6,7 @@
 #include "UObject/NoExportTypes.h"
 #include "StaticLogic.generated.h"
 
-
+class UMyWay;
 class UTwoDimensionalArray;
 
 UCLASS()
@@ -17,7 +17,15 @@ class TESTWORK_API UStaticLogic : public UObject
 public:
 
 	UFUNCTION()
-		static void FindWay(FIntPoint Start, FIntPoint Finish, UTwoDimensionalArray* Map, AActor* WayOwner);
+		static UMyWay* FindWay(FIntPoint Start, FIntPoint Finish, UTwoDimensionalArray* Map, AActor* WayOwner);
 	
-	
+	UFUNCTION()
+		static FIntPoint FindClickPosition(float X, float Y);
+
+	UFUNCTION()
+		static FVector FindPositionFromPoint(FIntPoint Pos);
+
+	UFUNCTION()
+		static FIntPoint FindNextPoint(UMyWay* Way, FIntPoint CurrPoint);
+
 };

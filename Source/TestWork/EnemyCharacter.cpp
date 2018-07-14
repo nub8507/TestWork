@@ -3,6 +3,7 @@
 #include "EnemyCharacter.h"
 
 #include "Engine.h"
+#include "MyWay.h"
 
 // Sets default values
 AEnemyCharacter::AEnemyCharacter()

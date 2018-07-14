@@ -6,6 +6,8 @@
 #include "GameFramework/Pawn.h"
 #include "EnemyCharacter.generated.h"
 
+class UMyWay;
+
 UCLASS()
 class TESTWORK_API AEnemyCharacter : public APawn
 {
@@ -35,5 +37,9 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "MyData")
 		FIntPoint FinishPoint;
 
+
+private:
+
+	UMyWay * Way;
 
 };

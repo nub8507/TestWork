@@ -6,6 +6,9 @@
 #include "GameFramework/Pawn.h"
 #include "PlayerCharacter.generated.h"
 
+class ALandscape;
+class UMyWay;
+
 UCLASS()
 class TESTWORK_API APlayerCharacter : public APawn
 {
@@ -34,6 +37,18 @@ public:
 
 private:
 
+	void MoveActionPressed();
+
+	void BarrierActionPressed();
+
 	UPROPERTY()
-		FIntPoint Position;
+		FIntPoint LastPosition;
+
+	UPROPERTY()
+		FIntPoint NextPosition;
+
+	UMyWay* Way;
+
+	void ExecMove(float Delta);
+
 };

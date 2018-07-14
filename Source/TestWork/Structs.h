@@ -3,7 +3,7 @@
 #include "Structs.generated.h"
 
 USTRUCT()
-struct FMyWay {
+struct FMyWay_ {
 
 	GENERATED_USTRUCT_BODY()
 
