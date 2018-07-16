@@ -16,7 +16,9 @@ AEnemyCharacter::AEnemyCharacter()
 void AEnemyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	//
+
+	//
 }
 
 // Called every frame

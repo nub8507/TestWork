@@ -81,6 +81,8 @@ Content/InfinityBladeEffects/*
 !Intermediate/ProjectFiles/**
 Intermediate/ReimportCache/*
 Intermediate/Config/*
+Intermediate/Plugins/*
+Intermediate/Staging/*
 Intermediate/AssetRegistryCache/*
 Intermediate/Build/*
 Intermediate/*.*

@@ -22,9 +22,11 @@ public:
 
 	void InitArray(int32 x, int32 y);
 
+	FIntPoint RetMapSize();
+
 private:
 	TArray<int32>Array;
-
+	
 	int32 SizeX;
 	int32 SizeY;
 };

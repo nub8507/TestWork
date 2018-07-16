@@ -10,16 +10,24 @@ bool AMyLevelScriptActor::AddWay(UMyWay* Way)
 		return false;
 	//
 	UMyWay* T = this->FindWay(Way->Owner);
-	if (T->Owner == nullptr)
+	if (T == nullptr)
 		WayList.Add(Way);
 	//
 	return true;
 }
 
-AMyLevelScriptActor::AMyLevelScriptActor()
+void AMyLevelScriptActor::BeginPlay()
 {
+	Super::BeginPlay();
+	//
 	this->Map = NewObject<UTwoDimensionalArray>();
 	this->Map->InitArray(31, 31);
+	//
+}
+
+AMyLevelScriptActor::AMyLevelScriptActor()
+{
+
 }
 
 UMyWay* AMyLevelScriptActor::FindWay(AActor* WayOwner)

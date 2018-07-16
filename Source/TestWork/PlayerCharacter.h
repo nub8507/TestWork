@@ -44,11 +44,9 @@ private:
 	UPROPERTY()
 		FIntPoint LastPosition;
 
-	UPROPERTY()
-		FIntPoint NextPosition;
-
 	UMyWay* Way;
 
 	void ExecMove(float Delta);
 
+	TSubclassOf<class UObject> FindOrLoadBluePrintClass(const TCHAR* path);
 };

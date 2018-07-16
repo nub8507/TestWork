@@ -20,6 +20,11 @@ void UTwoDimensionalArray::InitArray(int32 x,int32 y)
 	this->SizeY = y;
 }
 
+FIntPoint UTwoDimensionalArray::RetMapSize()
+{
+	return FIntPoint(this->SizeX,this->SizeY);
+}
+
 UTwoDimensionalArray::~UTwoDimensionalArray()
 {
 	Array.Empty();
