@@ -25,6 +25,13 @@ FIntPoint UTwoDimensionalArray::RetMapSize()
 	return FIntPoint(this->SizeX,this->SizeY);
 }
 
+bool UTwoDimensionalArray::IsEmpty()
+{
+	if (this->SizeX == 0 || this->SizeY == 0)
+		return true;
+	return false;
+}
+
 UTwoDimensionalArray::~UTwoDimensionalArray()
 {
 	Array.Empty();

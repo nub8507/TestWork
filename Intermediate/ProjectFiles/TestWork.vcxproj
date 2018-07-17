@@ -264,8 +264,12 @@
     <ClInclude Include="..\..\Source\TestWork\Barrier.h" />
     <ClCompile Include="..\..\Source\TestWork\EnemyCharacter.cpp" />
     <ClInclude Include="..\..\Source\TestWork\EnemyCharacter.h" />
+    <ClCompile Include="..\..\Source\TestWork\Gun.cpp" />
+    <ClCompile Include="..\..\Source\TestWork\MenuComponent.cpp" />
     <ClCompile Include="..\..\Source\TestWork\MyFireBall.cpp" />
     <ClCompile Include="..\..\Source\TestWork\MyLevelScriptActor.cpp" />
+    <ClInclude Include="..\..\Source\TestWork\Gun.h" />
+    <ClInclude Include="..\..\Source\TestWork\MenuComponent.h" />
     <ClInclude Include="..\..\Source\TestWork\MyFireBall.h" />
     <ClInclude Include="..\..\Source\TestWork\MyLevelScriptActor.h" />
     <ClCompile Include="..\..\Source\TestWork\MyWay.cpp" />

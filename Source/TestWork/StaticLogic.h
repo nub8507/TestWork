@@ -24,7 +24,7 @@ public:
 		static FIntPoint FindClickPosition(float X, float Y);
 
 	UFUNCTION()
-		static FVector FindPositionFromPoint(FIntPoint Pos);
+		static FVector FindPositionFromPoint(FIntPoint Pos,float Z);
 
 	UFUNCTION()
 		static FIntPoint FindNextPoint(UMyWay* Way, FIntPoint CurrPoint);

@@ -35,6 +35,7 @@ public:
 	UFUNCTION(BlueprintCallable)
 		void OnHit(AActor* HitComp, AActor* OtherActor, const FHitResult& Hit);
 
+
 private:
 
 	void MoveActionPressed();
@@ -49,4 +50,10 @@ private:
 	void ExecMove(float Delta);
 
 	TSubclassOf<class UObject> FindOrLoadBluePrintClass(const TCHAR* path);
+
+	void ShowMenuWin();
+
+	TArray<UMyWay*> FindWaysForRecalc(FIntPoint Barrier);
+
+	void RecalcWays(TArray<UMyWay*> WayList);
 };

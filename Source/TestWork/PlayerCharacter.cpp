@@ -9,6 +9,8 @@
 #include "MyLevelScriptActor.h"
 #include "TwoDimensionalArray.h"
 #include "Barrier.h"
+#include "MenuComponent.h"
+#include "EnemyCharacter.h"
 
 
 // Sets default values
@@ -50,7 +52,21 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 void APlayerCharacter::OnHit(AActor* HitComp, AActor* OtherActor, const FHitResult& Hit)
 {
 	//
-	GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::White, TEXT("PC EventHIT"));
+	APlayerController* const MyPlayer = Cast<APlayerController>(GEngine->GetFirstLocalPlayerController(GetWorld()));
+	MyPlayer->SetPause(true);
+	TSubclassOf<class UUserWidget> wMainMenu;
+	wMainMenu = FindOrLoadBluePrintClass(TEXT("Blueprint'/Game/GameBP/Actors/MenuDefeat.MenuDefeat_C'"));
+	UMenuComponent* UW = CreateWidget<UMenuComponent>(MyPlayer, wMainMenu);
+	if (UW)
+	{
+		UW->AddToViewport(9999);
+		//
+		FInputModeGameAndUI Mode;
+		Mode.SetLockMouseToViewportBehavior(EMouseLockMode::LockAlways);
+		Mode.SetHideCursorDuringCapture(true);
+		MyPlayer->SetInputMode(Mode);
+		MyPlayer->bShowMouseCursor = true;
+	}
 	//
 }
 
@@ -97,17 +113,22 @@ void APlayerCharacter::BarrierActionPressed()
 		//
 		if (F == this->LastPosition)return;
 		//
-
+		for (int i = 0; i < Level->WayList.Num(); i++) {
+			AEnemyCharacter*T= Cast<AEnemyCharacter>(Level->WayList[i]->Owner);
+			if (T != nullptr && T->LastPosition == F)return;
+		}
 		//
 		Level->Map->Set(F.X, F.Y, -1);
 		//
-		FVector PosBarrier=UStaticLogic::FindPositionFromPoint(F);
+		FVector PosBarrier=UStaticLogic::FindPositionFromPoint(F,10);
 		//
 		TSubclassOf<class ABarrier> aBarrier;
 		aBarrier = FindOrLoadBluePrintClass(TEXT("Blueprint'/Game/GameBP/Actors/BPBarrier.BPBarrier_C'"));
 		if (aBarrier != nullptr) {
 			GetWorld()->SpawnActor<ABarrier>(aBarrier.Get(), PosBarrier, FRotator(0,0,0));
 		}
+		//
+		RecalcWays(FindWaysForRecalc(F));
 		//
 	}
 	else if (Cast<ABarrier>(Hit.GetActor()) != nullptr) {
@@ -117,9 +138,11 @@ void APlayerCharacter::BarrierActionPressed()
 		FIntPoint F = UStaticLogic::FindClickPosition(Hit.Location.X, Hit.Location.Y);
 		Level->Map->Set(F.X, F.Y, 0);
 		Hit.GetActor()->Destroy();
+		//
+		RecalcWays(Level->WayList);
+		//
 	}
 	
-
 }
 
 void APlayerCharacter::ExecMove(float Delta)
@@ -128,17 +151,23 @@ void APlayerCharacter::ExecMove(float Delta)
 	float MoveSpeed = 200.f;
 	//
 	FVector CurrPos = this->GetActorLocation();
-	FVector Dest = UStaticLogic::FindPositionFromPoint(this->LastPosition);
+	FVector Dest = UStaticLogic::FindPositionFromPoint(this->LastPosition, CurrPos.Z);
 	FVector DistVector;
 	DistVector = Dest - CurrPos;
 	DistVector = DistVector.GetClampedToMaxSize2D(1.0f);
 	//
 	const FVector Movement = DistVector * MoveSpeed * Delta;
 	//
-	if (DistVector.Size2D() < 0.5f) {
+	if ((Dest - CurrPos).Size2D() < 2.f) {
+		//
+		if (this->LastPosition == FIntPoint(30, 30)){
+			ShowMenuWin();
+			return;
+		}
+		//
 		this->LastPosition = UStaticLogic::FindNextPoint(this->Way, this->LastPosition);
-		Dest = UStaticLogic::FindPositionFromPoint(this->LastPosition);
-		this->MoveRotation = (Dest - CurrPos).Rotation();
+		Dest = UStaticLogic::FindPositionFromPoint(this->LastPosition, CurrPos.Z);
+		this->MoveRotation = DistVector.Rotation();
 		return;
 	}
 	//
@@ -157,5 +186,65 @@ TSubclassOf<class UObject> APlayerCharacter::FindOrLoadBluePrintClass(const TCHA
 	MyItemBlueprint = (UClass*)something;
 
 	return MyItemBlueprint;
+}
+
+void APlayerCharacter::ShowMenuWin()
+{
+	//
+	APlayerController* const MyPlayer = Cast<APlayerController>(GEngine->GetFirstLocalPlayerController(GetWorld()));
+	MyPlayer->SetPause(true);
+	TSubclassOf<class UUserWidget> wMainMenu;
+	wMainMenu = FindOrLoadBluePrintClass(TEXT("Blueprint'/Game/GameBP/Actors/MenuWin.MenuWin_C'"));
+	UMenuComponent* UW = CreateWidget<UMenuComponent>(MyPlayer, wMainMenu);
+	if (UW)
+	{
+		UW->AddToViewport(9999);
+		//
+		FInputModeGameAndUI Mode;
+		Mode.SetLockMouseToViewportBehavior(EMouseLockMode::LockAlways);
+		Mode.SetHideCursorDuringCapture(true);
+		MyPlayer->SetInputMode(Mode);
+		MyPlayer->bShowMouseCursor = true;
+	}
+	//
+}
+
+TArray<UMyWay*> APlayerCharacter::FindWaysForRecalc(FIntPoint Barrier)
+{
+	TArray<UMyWay*> WayList;
+	WayList.Empty();
+	//
+	AMyLevelScriptActor* Level = Cast<AMyLevelScriptActor>(GetWorld()->GetLevelScriptActor());
+	for (int i = 0; i < Level->WayList.Num(); i++) {
+		for (int j = 0; j < Level->WayList[i]->WayPoints.Num(); j++) {
+			if (Level->WayList[i]->WayPoints[j] == Barrier) WayList.Add(Level->WayList[i]);
+		}
+	}
+	//
+	return WayList;
+}
+
+void APlayerCharacter::RecalcWays(TArray<UMyWay*> WayList)
+{
+	AMyLevelScriptActor* Level = Cast<AMyLevelScriptActor>(GetWorld()->GetLevelScriptActor());
+	//
+	for (int i = 0; i < WayList.Num(); i++) {
+		if (!WayList[i]->WayCyclical) {
+			UStaticLogic::FindWay(this->LastPosition, WayList[i]->WayPoints[WayList[i]->WayPoints.Num()-1], Level->Map, this, Level);
+		}
+		else {
+			AEnemyCharacter* T = Cast<AEnemyCharacter>(WayList[i]->Owner);
+			if (WayList[i]->MoveDirection) {
+				UStaticLogic::FindWay(T->LastPosition, WayList[i]->WayPoints[WayList[i]->WayPoints.Num() - 1], Level->Map, T, Level);
+				T->NeedRecalcWay = true;
+			}
+			else {
+				UStaticLogic::FindWay(T->LastPosition, WayList[i]->WayPoints[0], Level->Map, T, Level);
+				T->NeedRecalcWay = true;
+			}
+		}
+	}
+
+	//
 }
 

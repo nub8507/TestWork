@@ -24,7 +24,7 @@ UMyWay* UStaticLogic::FindWay(FIntPoint Start, FIntPoint Finish, UTwoDimensional
 	}else
 		Way->WayPoints.Empty();
 	//
-	if (Start == Finish || Map == nullptr) {
+	if (Start == Finish || Map == nullptr||Map->IsEmpty()) {
 		Way->WayPoints.Empty();
 		return Way;
 	}
@@ -60,9 +60,9 @@ FIntPoint UStaticLogic::FindClickPosition(float X, float Y)
 	//
 }
 
-FVector UStaticLogic::FindPositionFromPoint(FIntPoint Pos)
+FVector UStaticLogic::FindPositionFromPoint(FIntPoint Pos,float Z)
 {
-	return FVector(Pos.X*100+50,Pos.Y*100+50,10);
+	return FVector(Pos.X*100+50,Pos.Y*100+50,Z);
 }
 
 FIntPoint UStaticLogic::FindNextPoint(UMyWay * Way, FIntPoint CurrPoint)

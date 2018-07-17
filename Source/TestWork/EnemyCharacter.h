@@ -31,15 +31,26 @@ public:
 	UFUNCTION(BlueprintCallable)
 		void OnHit(AActor* HitComp, AActor* OtherActor, const FHitResult& Hit);
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "MyData")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MyData")
 		FIntPoint StartPoint;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "MyData")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MyData")
 		FIntPoint FinishPoint;
 
+	UPROPERTY()
+		FIntPoint LastPosition;
+
+	UPROPERTY()
+	bool NeedRecalcWay;
 
 private:
 
+	FRotator MoveRotation;
+
 	UMyWay * Way;
+
+	void ExecMove(float Delta);
+
+	void RecalcWay(bool Direction);
 
 };

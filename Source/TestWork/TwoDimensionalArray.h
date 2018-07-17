@@ -24,6 +24,8 @@ public:
 
 	FIntPoint RetMapSize();
 
+	bool IsEmpty();
+
 private:
 	TArray<int32>Array;
 	

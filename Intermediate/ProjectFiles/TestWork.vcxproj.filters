@@ -94,9 +94,21 @@
     <ClInclude Include="..\..\Source\TestWork\MyFireBall.h">
       <Filter>Source\TestWork</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\TestWork\Gun.h">
+      <Filter>Source\TestWork</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\TestWork\MenuComponent.h">
+      <Filter>Source\TestWork</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\TestWork\MyFireBall.cpp">
+      <Filter>Source\TestWork</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TestWork\Gun.cpp">
+      <Filter>Source\TestWork</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\TestWork\MenuComponent.cpp">
       <Filter>Source\TestWork</Filter>
     </ClCompile>
   </ItemGroup>
