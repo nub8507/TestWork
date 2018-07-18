@@ -28,13 +28,10 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	UFUNCTION(BlueprintCallable)
-		void OnHit(AActor* HitComp, AActor* OtherActor, const FHitResult& Hit);
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MyData")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		FIntPoint StartPoint;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MyData")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		FIntPoint FinishPoint;
 
 	UPROPERTY()

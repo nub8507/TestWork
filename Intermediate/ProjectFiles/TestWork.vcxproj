@@ -278,7 +278,6 @@
     <ClInclude Include="..\..\Source\TestWork\PlayerCharacter.h" />
     <ClCompile Include="..\..\Source\TestWork\StaticLogic.cpp" />
     <ClInclude Include="..\..\Source\TestWork\StaticLogic.h" />
-    <ClInclude Include="..\..\Source\TestWork\Structs.h" />
     <None Include="..\..\Source\TestWork\TestWork.Build.cs" />
     <ClCompile Include="..\..\Source\TestWork\TestWork.cpp" />
     <ClInclude Include="..\..\Source\TestWork\TestWork.h" />

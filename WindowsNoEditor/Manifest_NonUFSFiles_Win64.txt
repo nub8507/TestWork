@@ -1,4 +1,4 @@
-TestWork/Binaries/Win64/TestWork-Win64-Shipping.exe	2018-07-17T19:09:28.444Z
+TestWork/Binaries/Win64/TestWork-Win64-Shipping.exe	2018-07-18T15:54:03.668Z
 Engine/Extras/Redist/en-us/UE4PrereqSetup_x64.exe	2018-04-22T19:00:00.216Z
 Engine/Binaries/ThirdParty/Oculus/OVRPlugin/OVRPlugin/Win64/OVRPlugin.dll	2018-04-22T18:51:50.109Z
 Engine/Binaries/ThirdParty/NVIDIA/NVaftermath/Win64/GFSDK_Aftermath_Lib.x64.dll	2018-04-22T18:51:49.764Z
@@ -16,4 +16,4 @@ Engine/Binaries/ThirdParty/Ogg/Win64/VS2015/libogg_64.dll	2018-04-22T18:51:50.11
 Engine/Binaries/ThirdParty/Vorbis/Win64/VS2015/libvorbis_64.dll	2018-04-22T18:52:11.070Z
 Engine/Binaries/ThirdParty/Vorbis/Win64/VS2015/libvorbisfile_64.dll	2018-04-22T18:52:11.072Z
 Engine/Binaries/ThirdParty/OpenVR/OpenVRv1_0_10/Win64/openvr_api.dll	2018-04-22T18:51:50.181Z
-TestWork.exe	2018-07-17T19:09:50.641Z
+TestWork.exe	2018-07-18T15:54:29.725Z

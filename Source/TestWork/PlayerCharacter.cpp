@@ -78,9 +78,7 @@ void APlayerCharacter::MoveActionPressed()
 	FHitResult Hit;
 	PC->GetHitResultUnderCursor(ECC_Visibility, false, Hit);
 	//
-	//	GEngine->AddOnScreenDebugMessage(-1, 0.5f, FColor::White, Hit.Location.ToString());
-	//
-	if (Hit.Actor == nullptr)
+	if (Hit.GetActor() == nullptr)
 		return;
 
 	if (Cast<ALandscape>(Hit.GetActor())!=nullptr)	{
@@ -96,7 +94,7 @@ void APlayerCharacter::MoveActionPressed()
 
 void APlayerCharacter::BarrierActionPressed()
 {
-	//	GEngine->AddOnScreenDebugMessage(-1, 0.1f, FColor::White, FString::Printf(TEXT("%s"), TEXT("BarrierAction")));
+	//
 	APlayerController *PC = (APlayerController*)GetWorld()->GetFirstPlayerController();
 	//
 	FHitResult Hit;
@@ -142,7 +140,6 @@ void APlayerCharacter::BarrierActionPressed()
 		RecalcWays(Level->WayList);
 		//
 	}
-	
 }
 
 void APlayerCharacter::ExecMove(float Delta)
@@ -158,9 +155,9 @@ void APlayerCharacter::ExecMove(float Delta)
 	//
 	const FVector Movement = DistVector * MoveSpeed * Delta;
 	//
-	if ((Dest - CurrPos).Size2D() < 2.f) {
+	if ((Dest - CurrPos).Size2D() <= 1.5f * Movement.Size2D()) {
 		//
-		if (this->LastPosition == FIntPoint(30, 30)){
+		if (this->LastPosition == FIntPoint(30, 30)) {
 			ShowMenuWin();
 			return;
 		}
@@ -230,21 +227,23 @@ void APlayerCharacter::RecalcWays(TArray<UMyWay*> WayList)
 	//
 	for (int i = 0; i < WayList.Num(); i++) {
 		if (!WayList[i]->WayCyclical) {
+			if (WayList[i]->WayPoints.Num() == 0) continue;
 			UStaticLogic::FindWay(this->LastPosition, WayList[i]->WayPoints[WayList[i]->WayPoints.Num()-1], Level->Map, this, Level);
 		}
 		else {
 			AEnemyCharacter* T = Cast<AEnemyCharacter>(WayList[i]->Owner);
 			if (WayList[i]->MoveDirection) {
-				UStaticLogic::FindWay(T->LastPosition, WayList[i]->WayPoints[WayList[i]->WayPoints.Num() - 1], Level->Map, T, Level);
+				if (WayList[i]->WayPoints.Num() == 0) UStaticLogic::FindWay(T->LastPosition, T->FinishPoint, Level->Map, T, Level);
+				else UStaticLogic::FindWay(T->LastPosition, WayList[i]->WayPoints[WayList[i]->WayPoints.Num() - 1], Level->Map, T, Level);
 				T->NeedRecalcWay = true;
 			}
 			else {
-				UStaticLogic::FindWay(T->LastPosition, WayList[i]->WayPoints[0], Level->Map, T, Level);
+				if (WayList[i]->WayPoints.Num() == 0) UStaticLogic::FindWay(T->LastPosition, T->StartPoint, Level->Map, T, Level);
+				else UStaticLogic::FindWay(T->LastPosition, WayList[i]->WayPoints[0], Level->Map, T, Level);
 				T->NeedRecalcWay = true;
 			}
 		}
 	}
-
 	//
 }
 

@@ -135,6 +135,7 @@ bool UStaticLogic::StartWave(UTwoDimensionalArray * Map, TArray<FIntPoint> Start
 	for (int k = 0; k < Start.Num(); k++) {
 		int32 NumWave = Map->Get(Start[k].X, Start[k].Y);
 		if (Start[k] == Finish) return true;
+		if (NumWave == -1)return false;
 		//
 		int32 X = Start[k].X;
 		int32 Y = Start[k].Y;

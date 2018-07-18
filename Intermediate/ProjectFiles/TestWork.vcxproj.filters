@@ -65,9 +65,6 @@
     <ClInclude Include="..\..\Source\TestWork\StaticLogic.h">
       <Filter>Source\TestWork</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\TestWork\Structs.h">
-      <Filter>Source\TestWork</Filter>
-    </ClInclude>
     <None Include="..\..\Source\TestWork\TestWork.Build.cs">
       <Filter>Source\TestWork</Filter>
     </None>
